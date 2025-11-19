@@ -45,14 +45,12 @@ Shows the parameters used to query the available MCP tools.
 
 ![List Tools](./assets/mcp-list-tools.png)
 
----
 
 #### ⚙️ MCP — Execute Tool  
 Example of a tool execution with dynamic inputs from the AI.
 
 ![Execute Tool](./assets/mcp-execute-tool.png)
 
----
 
 #### 💬 Chat Flow  
 End-to-end demonstration of the agent using MCP tools.
@@ -61,7 +59,26 @@ End-to-end demonstration of the agent using MCP tools.
 
 ---
 
-## 🏗️ How to Run Locally
+## How the Agent Works
+
+The AI Agent Node follows this logic:
+
+- Always list tools before executing  
+- Use only `brave_web_search` and `brave_local_search`  
+- Execute the selected tool using `$fromAI("tool", "selected tool to execute")` 
+- Send parameters through `$fromAI("Tool_Parameters", "", "json")`
+
+### Workflow Steps
+
+1. Detect intent  
+2. List available tools  
+3. Select the appropriate tool  
+4. Call the MCP server  
+5. Return the final response to the chat
+
+---
+
+## How to Run Locally
 
 ### 1. Import the workflow  
 In n8n: Settings -> Import from File -> workflow.json
